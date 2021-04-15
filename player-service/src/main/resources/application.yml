@@ -1,0 +1,16 @@
+server:
+  tomcat:
+    threads:
+      max: 15
+resilience4j.bulkhead:
+  instances:
+    statsService:
+      maxConcurrentCalls: 10
+      maxWaitDuration: 10ms
+    playerService:
+      maxConcurrentCalls: 20
+---
+stats:
+  service:
+    endpoint: http://localhost:9100/api/player/{id}/stats
+
